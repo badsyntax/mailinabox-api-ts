@@ -1,0 +1,6 @@
+src
+tsconfig.json
+runtime.ts
+index.ts
+.openapi-generator-ignore
+.openapi-generator
