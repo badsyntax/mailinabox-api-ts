@@ -1,6 +1,6 @@
 {
   "name": "mailinabox-api",
-  "version": "0.0.0-SNAPSHOT.2",
+  "version": "0.0.0-SNAPSHOT.3",
   "description": "Client SDK for the Mail-in-a-Box API",
   "author": "Richard Willis <willis.rh@gmail.com>",
   "license": "MIT",
@@ -9,10 +9,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/badsyntax/mailinabox-api"
+    "url": "https://github.com/badsyntax/mailinabox-api-ts"
   },
   "bugs": {
-    "url": "https://github.com/badsyntax/mailinabox-api/issues"
+    "url": "https://github.com/badsyntax/mailinabox-api-ts/issues"
   },
   "keywords": [
     "mailinabox",
