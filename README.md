@@ -4,8 +4,8 @@
 
 JavaScript/TypeScript client SDK for the Mail-in-a-Box API.
 
-- API version: 0.46.0
-- Package version: 0.46.4
+- API version: 0.47.0
+- Package version: 0.47.0
 
 https://www.npmjs.com/package/mailinabox-api
 
