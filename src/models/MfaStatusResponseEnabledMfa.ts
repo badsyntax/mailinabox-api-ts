@@ -14,39 +14,53 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Generate SSL CSR request.
+ *
  * @export
- * @interface SSLCSRGenerateRequest
+ * @interface MfaStatusResponseEnabledMfa
  */
-export interface SSLCSRGenerateRequest {
+export interface MfaStatusResponseEnabledMfa {
   /**
    *
    * @type {string}
-   * @memberof SSLCSRGenerateRequest
+   * @memberof MfaStatusResponseEnabledMfa
    */
-  countrycode: string;
+  id?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof MfaStatusResponseEnabledMfa
+   */
+  type?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof MfaStatusResponseEnabledMfa
+   */
+  label?: string;
 }
 
-export function SSLCSRGenerateRequestFromJSON(
+export function MfaStatusResponseEnabledMfaFromJSON(
   json: any
-): SSLCSRGenerateRequest {
-  return SSLCSRGenerateRequestFromJSONTyped(json, false);
+): MfaStatusResponseEnabledMfa {
+  return MfaStatusResponseEnabledMfaFromJSONTyped(json, false);
 }
 
-export function SSLCSRGenerateRequestFromJSONTyped(
+export function MfaStatusResponseEnabledMfaFromJSONTyped(
   json: any,
   ignoreDiscriminator: boolean
-): SSLCSRGenerateRequest {
+): MfaStatusResponseEnabledMfa {
   if (json === undefined || json === null) {
     return json;
   }
   return {
-    countrycode: json['countrycode'],
+    id: !exists(json, 'id') ? undefined : json['id'],
+    type: !exists(json, 'type') ? undefined : json['type'],
+    label: !exists(json, 'label') ? undefined : json['label'],
   };
 }
 
-export function SSLCSRGenerateRequestToJSON(
-  value?: SSLCSRGenerateRequest | null
+export function MfaStatusResponseEnabledMfaToJSON(
+  value?: MfaStatusResponseEnabledMfa | null
 ): any {
   if (value === undefined) {
     return undefined;
@@ -55,6 +69,8 @@ export function SSLCSRGenerateRequestToJSON(
     return null;
   }
   return {
-    countrycode: value.countrycode,
+    id: value.id,
+    type: value.type,
+    label: value.label,
   };
 }

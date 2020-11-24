@@ -13,41 +13,59 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+  MfaStatusResponseEnabledMfa,
+  MfaStatusResponseEnabledMfaFromJSON,
+  MfaStatusResponseEnabledMfaFromJSONTyped,
+  MfaStatusResponseEnabledMfaToJSON,
+  MfaStatusResponseNewMfa,
+  MfaStatusResponseNewMfaFromJSON,
+  MfaStatusResponseNewMfaFromJSONTyped,
+  MfaStatusResponseNewMfaToJSON,
+} from './';
+
 /**
- * Generate SSL CSR request.
+ *
  * @export
- * @interface SSLCSRGenerateRequest
+ * @interface MfaStatusResponse
  */
-export interface SSLCSRGenerateRequest {
+export interface MfaStatusResponse {
   /**
    *
-   * @type {string}
-   * @memberof SSLCSRGenerateRequest
+   * @type {MfaStatusResponseEnabledMfa}
+   * @memberof MfaStatusResponse
    */
-  countrycode: string;
+  enabledMfa?: MfaStatusResponseEnabledMfa | null;
+  /**
+   *
+   * @type {MfaStatusResponseNewMfa}
+   * @memberof MfaStatusResponse
+   */
+  newMfa?: MfaStatusResponseNewMfa;
 }
 
-export function SSLCSRGenerateRequestFromJSON(
-  json: any
-): SSLCSRGenerateRequest {
-  return SSLCSRGenerateRequestFromJSONTyped(json, false);
+export function MfaStatusResponseFromJSON(json: any): MfaStatusResponse {
+  return MfaStatusResponseFromJSONTyped(json, false);
 }
 
-export function SSLCSRGenerateRequestFromJSONTyped(
+export function MfaStatusResponseFromJSONTyped(
   json: any,
   ignoreDiscriminator: boolean
-): SSLCSRGenerateRequest {
+): MfaStatusResponse {
   if (json === undefined || json === null) {
     return json;
   }
   return {
-    countrycode: json['countrycode'],
+    enabledMfa: !exists(json, 'enabled_mfa')
+      ? undefined
+      : MfaStatusResponseEnabledMfaFromJSON(json['enabled_mfa']),
+    newMfa: !exists(json, 'new_mfa')
+      ? undefined
+      : MfaStatusResponseNewMfaFromJSON(json['new_mfa']),
   };
 }
 
-export function SSLCSRGenerateRequestToJSON(
-  value?: SSLCSRGenerateRequest | null
-): any {
+export function MfaStatusResponseToJSON(value?: MfaStatusResponse | null): any {
   if (value === undefined) {
     return undefined;
   }
@@ -55,6 +73,7 @@ export function SSLCSRGenerateRequestToJSON(
     return null;
   }
   return {
-    countrycode: value.countrycode,
+    enabled_mfa: MfaStatusResponseEnabledMfaToJSON(value.enabledMfa),
+    new_mfa: MfaStatusResponseNewMfaToJSON(value.newMfa),
   };
 }

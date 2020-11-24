@@ -1,6 +1,6 @@
 {
   "name": "mailinabox-api",
-  "version": "0.47.0",
+  "version": "0.51.0",
   "description": "Client SDK for the Mail-in-a-Box API",
   "author": "Richard Willis <willis.rh@gmail.com>",
   "license": "MIT",

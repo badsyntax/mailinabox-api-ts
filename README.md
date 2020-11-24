@@ -4,8 +4,8 @@
 
 JavaScript/TypeScript client SDK for the Mail-in-a-Box API.
 
-- API version: 0.47.0
-- Package version: 0.47.0
+- API version: 0.51.0
+- Package version: 0.51.0
 
 https://www.npmjs.com/package/mailinabox-api
 
@@ -13,7 +13,7 @@ https://www.npmjs.com/package/mailinabox-api
 
 ### Installing
 
-```js
+```bash
 npm install mailinabox-api --save
 ```
 
@@ -21,16 +21,10 @@ npm install mailinabox-api --save
 
 ```ts
 import {
-  AliasesApi,
   Configuration,
   ConfigurationParameters,
-  DnsApi,
   MailUsersResponseFormat,
-  SslApi,
-  SystemApi,
-  UserApi,
-  UsersApi,
-  WebApi,
+  MailApi
 } from 'mailinabox-api';
 
 const apiConfigParams: ConfigurationParameters = {
@@ -40,16 +34,10 @@ const apiConfigParams: ConfigurationParameters = {
 };
 
 const apiConfig = new Configuration(apiConfigParams);
-
-const userApi = new UserApi(apiConfig);
-const systemApi = new SystemApi(apiConfig);
-const sslApi = new SslApi(apiConfig);
-const dnsApi = new DnsApi(apiConfig);
 const mailApi = new MailApi(apiConfig);
-const webApi = new WebApi(apiConfig);
 
 // example request
-const users = await usersApi.getMailUsers({
+const users = await mailApi.getMailUsers({
   format: MailUsersResponseFormat.Json,
 });
 ```

@@ -14,40 +14,50 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Generate SSL CSR request.
+ *
  * @export
- * @interface SSLCSRGenerateRequest
+ * @interface MfaEnableRequest
  */
-export interface SSLCSRGenerateRequest {
+export interface MfaEnableRequest {
   /**
    *
    * @type {string}
-   * @memberof SSLCSRGenerateRequest
+   * @memberof MfaEnableRequest
    */
-  countrycode: string;
+  secret: string;
+  /**
+   *
+   * @type {string}
+   * @memberof MfaEnableRequest
+   */
+  code: string;
+  /**
+   *
+   * @type {string}
+   * @memberof MfaEnableRequest
+   */
+  label?: string;
 }
 
-export function SSLCSRGenerateRequestFromJSON(
-  json: any
-): SSLCSRGenerateRequest {
-  return SSLCSRGenerateRequestFromJSONTyped(json, false);
+export function MfaEnableRequestFromJSON(json: any): MfaEnableRequest {
+  return MfaEnableRequestFromJSONTyped(json, false);
 }
 
-export function SSLCSRGenerateRequestFromJSONTyped(
+export function MfaEnableRequestFromJSONTyped(
   json: any,
   ignoreDiscriminator: boolean
-): SSLCSRGenerateRequest {
+): MfaEnableRequest {
   if (json === undefined || json === null) {
     return json;
   }
   return {
-    countrycode: json['countrycode'],
+    secret: json['secret'],
+    code: json['code'],
+    label: !exists(json, 'label') ? undefined : json['label'],
   };
 }
 
-export function SSLCSRGenerateRequestToJSON(
-  value?: SSLCSRGenerateRequest | null
-): any {
+export function MfaEnableRequestToJSON(value?: MfaEnableRequest | null): any {
   if (value === undefined) {
     return undefined;
   }
@@ -55,6 +65,8 @@ export function SSLCSRGenerateRequestToJSON(
     return null;
   }
   return {
-    countrycode: value.countrycode,
+    secret: value.secret,
+    code: value.code,
+    label: value.label,
   };
 }

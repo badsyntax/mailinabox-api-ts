@@ -14,40 +14,36 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * Generate SSL CSR request.
+ *
  * @export
- * @interface SSLCSRGenerateRequest
+ * @interface MfaDisableRequest
  */
-export interface SSLCSRGenerateRequest {
+export interface MfaDisableRequest {
   /**
    *
    * @type {string}
-   * @memberof SSLCSRGenerateRequest
+   * @memberof MfaDisableRequest
    */
-  countrycode: string;
+  mfaId?: string | null;
 }
 
-export function SSLCSRGenerateRequestFromJSON(
-  json: any
-): SSLCSRGenerateRequest {
-  return SSLCSRGenerateRequestFromJSONTyped(json, false);
+export function MfaDisableRequestFromJSON(json: any): MfaDisableRequest {
+  return MfaDisableRequestFromJSONTyped(json, false);
 }
 
-export function SSLCSRGenerateRequestFromJSONTyped(
+export function MfaDisableRequestFromJSONTyped(
   json: any,
   ignoreDiscriminator: boolean
-): SSLCSRGenerateRequest {
+): MfaDisableRequest {
   if (json === undefined || json === null) {
     return json;
   }
   return {
-    countrycode: json['countrycode'],
+    mfaId: !exists(json, 'mfa_id') ? undefined : json['mfa_id'],
   };
 }
 
-export function SSLCSRGenerateRequestToJSON(
-  value?: SSLCSRGenerateRequest | null
-): any {
+export function MfaDisableRequestToJSON(value?: MfaDisableRequest | null): any {
   if (value === undefined) {
     return undefined;
   }
@@ -55,6 +51,6 @@ export function SSLCSRGenerateRequestToJSON(
     return null;
   }
   return {
-    countrycode: value.countrycode,
+    mfa_id: value.mfaId,
   };
 }
